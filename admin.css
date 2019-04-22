@@ -1,0 +1,34 @@
+#head1{
+	display: inline-block;
+	width: 50%;
+	height: 50px;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	margin:0 auto;
+	border-radius:0  50px 0 0;
+
+	/*height: 58.6px;*/
+}
+#head2{
+	display: inline-block;
+	width: 50%;
+	height: 50px;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	margin:0 auto;
+	border-radius: 50px 0 0 0;
+	/*height: 58.6px;*/
+}
+.active{
+	background-color:white ;
+	border-right: 1px solid #e3e3e3;
+	/*box-shadow: 2px -3px 3px;*/
+}
+.headleft{
+	border-radius:0  50px 0 0;
+}
+.headright{
+	border-radius: 50px 0 0 0;
+}

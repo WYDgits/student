@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>会议室预约申请</title>
+	<link rel="stylesheet" type="text/css" href="admin.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">		
+	<link rel="stylesheet" href="style.css">		
+	<script src="js/modernizr.js"></script>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- [if lt IE 9]> -->
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<!-- <![endif] -->
+</head>
+<body>
+	<div style="background-color: #6CF;width: 100%;height: 20%;border-radius: 0 0 0 40px; box-shadow: 5px 5px 5px #888888 ;color: black">
+		<div style="background-color: ;width: 200px;height: 100%;display: inline-block;">
+			<div style="width: 100%;background-color: ;padding-top: 40px;text-align: center;font-size: 25px" >会议室预约申请</div>
+		</div>
+		<div style="background-color: ;width: 120px;height: 100%;float: right;display: inline-block;">
+			<div style="width: 100%;background-color: ;padding-top: 45px;text-align: center;" onclick="go()"><span class="glyphicon glyphicon-menu-right" style="zoom:200%"></span></div>
+		</div>
+	</div>
+	<div class="container" style="margin-top: 10%;margin-bottom: 20%">
+		
+		
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				
+				<!--  -->
+				<!-- Start Sign In Form -->
+				<form id="form" action="http://lhj.ngrok.xiaomiqiu.cn/user/apply/write" class="fh5co-form animate-box" data-animate-effect="fadeIn" onsubmit="return submit()" method="post">
+					
+					<div class="form-group">
+						<label for="building" class="">教学楼</label>
+						<select class="form-control" name="building" id="building" >
+							<option value="逸夫楼">逸夫楼</option>
+							<option value="逸夫楼" >逸夫楼</option>
+							<option value="逸夫楼" >逸夫楼</option>
+							<option value="逸夫楼" >逸夫楼</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="meetingRoom" class="">会议室</label>
+						<select class="form-control" name="meetingRoom" id="meetingRoom" >
+							<option value="103">103</option>
+							<!-- <option value="104">104</option> -->
+							<!-- <option value="108">108</option> -->
+							<option value="305">305</option>
+							<option value="306">306</option>
+							<option value="307">307</option>
+							<option value="308">308</option>
+							<option value="309">309</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="orderDate" class="">占用日期</label>
+						<input  type="date"   required="1" name="orderDate" class="form-control" id="start"  autocomplete="on">
+					</div>
+					<div class="form-group" id="show_start" style="display: none;">
+						<label for="orderBegin" class="">开始时间</label>
+						<select class="form-control" name="orderBegin" id="orderBegin" >
+							<option value="">请选择</option>
+							<option value="08:00">08:00</option>
+							<option value="08:30">08:30</option>
+							<option value="09:00">09:00</option>
+							<option value="09:30">09:30</option>
+							<option value="10:00">10:00</option>
+							<option value="10:30">10:30</option>
+							<option value="11:00">11:00</option>
+							<option value="11:30">11:30</option>
+							<option value="12:00">12:00</option>
+							<option value="12:30">12:30</option>
+							<option value="13:00">13:00</option>
+							<option value="13:30">13:30</option>
+							<option value="14:00">14:00</option>
+							<option value="14:30">14:30</option>
+							<option value="15:00">15:00</option>
+							<option value="15:30">15:30</option>
+							<option value="16:00">16:00</option>
+							<option value="16:30">16:30</option>
+							<option value="17:00">17:00</option>
+							<option value="17:30">17:30</option>
+							<option value="18:00">18:00</option>
+							<option value="18:30">18:30</option>
+							<option value="19:00">19:00</option>
+							<option value="19:30">19:30</option>
+							<option value="20:00">20:00</option>
+							<option value="20:30">20:30</option>
+							<option value="21:00">21:00</option>
+							<option value="21:30">21:30</option>
+							<option value="22:00">22:00</option>
+						</select>
+					</div>
+					<div class="form-group" id="show_end" style="display: none;">
+						<label for="orderEnd" class="">结束时间</label>
+						<select class="form-control" name="orderEnd" id="orderEnd">
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="meetingSize" class="">规模</label>
+						<select class="form-control" name="meetingSize" id="meetingSize" >
+							<option value="30人以下">30人以下</option>
+							<option value="20人以下" >20人以下</option>
+							<option value="10人以下" >10人以下</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="applicant" class="">申请人姓名</label>
+						<input type="text" name="applicant" required="1" id="applicant" placeholder="" class="form-control"  >
+					</div>
+					<div class="form-group">
+						<label for="phone" class="">联系方式</label>
+						<input type="number" name="phone" id="phone" required="1" placeholder="手机号码" class="form-control"  >
+					</div>
+					<div class="form-group">
+						<label for="reason" class="">占用理由</label>
+						<textarea type="text" name="reason" id="reason" required="1" class="form-control"  autocomplete="on"></textarea>
+					</div>
+					<div class="form-group" style="text-align: center;display: inline-block;margin-left: 37% ">
+						<input type="submit" id="submit" value="提交申请" class="btn btn-primary">
+					</div>
+					<a style="float: right;margin-top: 6px"  href="list.html">申请记录</a>
+				</form>
+				<!-- END Sign In Form -->
+
+			</div>
+		</div>
+
+	</div>
+<footer class="navbar-fixed-bottom" style="margin-bottom: " >
+<div class="" style="background-color: #e3e3e3;height:  50px">
+	<div id="head1" class="">
+		<div style="width: 100%;margin:15px auto" onclick="javascript:location.href='index.html'">返回主页</div>
+	</div>
+
+	<div id="head2" >
+		<div style="width: 100%;margin:15px auto" onclick="javascript:location.href='apply.html'">我要申请</div>
+	</div>
+</div>
+</footer>
+	<script type="text/javascript">
+		// request();//进入页面时，向服务器发送请求，获取教学楼和会议室数据
+		function request(){
+			var xmlhttp;
+			var require = true;
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.open("POST","http://zpzwpr.natappfree.cc/user/apply/write",true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send();
+			xmlhttp.onreadystatechange=function(){
+				if (xmlhttp.readyState == 4 && xmlhttp.status==200) {
+					var jsonarr = JSON.parse(xmlhttp.responseText);//如果成功，则将教学楼那一栏 更换数据
+					alert(jsonarr);
+				}else{
+					 // alert("申请失败");
+				}
+			}
+		};
+		function submit(){
+			$(".submit").ajaxSubmit(function(message) { 
+		// 对于表单提交成功后处理，message为返回内容 
+		}); 
+ 
+		return false;
+		}
+			// var xmlhttp;
+			// var applicant = document.getElementById("applicant").value;
+			// // var number = document.getElementById("applicant").innerHTML;
+			// var building = document.getElementById("building").value;
+			// var meetingSize = document.getElementById("meetingSize").value;
+			// var meetingRoom = document.getElementById("meetingRoom").value;
+			// var orderDate = document.getElementById("start").value;
+			// var orderBegin = document.getElementById("orderBegin").value;
+			// var orderEnd = document.getElementById("orderEnd").value;
+			// var reason = document.getElementById("reason").value;
+			// var phone = document.getElementById("phone").value;
+			// // var str = "building:"+building+"&applicant="+applicant+"&meetingRoom="+meetingRoom+"&meetingSize="+meetingSize+"&orderDate="+orderDate+"&orderBegin="+orderBegin+"&orderEnd="+orderEnd+"&reason="+reason+"&phone="+phone;
+			// // var str = "{'data':['list':['applicant':applicant]}";
+			// // str = 
+			// var require = true;
+			// if (window.XMLHttpRequest) {
+			// 	xmlhttp = new XMLHttpRequest();
+			// }else{
+			// 	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			// }
+			// xmlhttp.open("POST","http://lhj.ngrok.xiaomiqiu.cn/user/apply/write",true);
+			// var str = document.getElementById("form").serialize();
+			// xmlhttp.send(str);
+			// xmlhttp.onreadystatechange=function(){
+			// 	if (xmlhttp.readyState == 4 && xmlhttp.status==200) {
+			// 		var jsonarr = JSON.parse(xmlhttp.responseText);//如果成功，则将教学楼那一栏 更换数据
+			// 		alert("success");
+			// 	}else{
+			// 		 // alert("申请失败");
+			// 	}
+			// }
+		
+
+
+
+		document.getElementById("start").onchange =function start(){//显示开始时间
+			document.getElementById("show_start").style.display = "block";
+		};
+
+
+		document.getElementById("orderBegin").onchange =function start(){//显示结束时间
+			var arr = new Array("08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00",);
+			var starttime = document.getElementById("orderBegin");
+			var startindex = starttime.selectedIndex;
+			var endlen = document.getElementById("orderEnd").length;
+			for (var i = 0; i < endlen ; i++) {
+				 document.getElementById("orderEnd").remove(0);//清空之前的节点
+			}
+			for (var i = startindex; i < arr.length ; i++) {
+				var node = document.createElement("option");
+				node.innerHTML=	arr[i];
+				node.value = arr[i];
+				// node.name ="name";
+				document.getElementById("orderEnd").add(node,null);//添加新的节点
+			}
+			document.getElementById("show_end").style.display = "block";
+		};
+
+
+		function go() {
+			location.href="applylist.html";
+		}
+	</script>
+</body>
+</html>

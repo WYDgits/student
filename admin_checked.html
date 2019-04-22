@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>会议室预约管理</title>
+	<meta charset="utf-8">
+
+	
+	<!-- 网络限制 -->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'> -->
+		<!-- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> -->
+		<!-- <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> -->
+		<!-- 网络限制 -->
+		<link rel="stylesheet" type="text/css" href="admin.css">
+
+		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/owl.carousel.css">
+		<link rel="stylesheet" href="css/owl.theme.css">		
+		<link rel="stylesheet" href="style.css">		
+		<script src="js/modernizr.js"></script>
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!-- [if lt IE 9]> -->
+
+		<!-- <![endif] -->
+		<style type="text/css">
+			body{
+				color: #4d4852;
+			}
+			td{
+				font-size: 15px;
+				padding: 0;
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body style="background-color: ">
+<!-- 	<div style="background-color: #6CF;width: 100%;height: 30%;border-radius: 0 0 0 40px; box-shadow: 5px 5px 5px #888888 ;color: black">
+		<div style="background-color: ;width: 120px;height: 100%;display: inline-block;">
+			<div style="width: 100%;background-color: ;padding-top: 80px;text-align: center;font-size: 25px">逸夫楼</div>
+			<div style="width: 100%;background-color: ;margin-top: 30px;text-align: center;font-size: 15px">全部会议室</div>
+		</div>
+		<div style="background-color: ;width: 120px;height: 100%;float: right;display: inline-block;">
+			<div style="width: 100%;background-color: ;padding-top: 70px;text-align: center;" onclick="go()"><span class="glyphicon glyphicon-menu-right" style="zoom:200%"></span></div>
+		</div>
+	</div>
+-->
+
+<!-- <div class="" style="background-color: #e3e3e3;height:  50px">
+	<div id="head1" class="active">
+		<div style="width: 100%;margin:15px auto">待审核</div>
+	</div>
+	<div id="head2" >
+		<div style="width: 100%;margin:15px auto">审核历史</div>
+	</div>
+</div> -->
+<div style="background-color: #6CF;width: 100%;height: 20%;border-radius: 0 0 0 40px; box-shadow: 5px 5px 5px #888888 ;color: black" >
+		<div style="background-color: ;width: 120px;height: 100%;display: inline-block;">
+			<div style="width: 100%;background-color: ;padding-top: 40px;text-align: center;font-size: 25px">审核记录</div>
+		</div>
+		<div style="background-color: ;width: 120px;height: 100%;float: right;display: inline-block;">
+			<div style="width: 100%;background-color: ;padding-top: 45px;text-align: center;" onclick="go()"><span class="glyphicon glyphicon-menu-right" style="zoom:200%"></span></div>
+		</div>
+	</div>
+
+<!-- <hr style="opacity: 0;"> -->
+<script type="text/javascript">
+	// request();
+	list();
+	
+	// bangding();
+	// headtoggle();
+
+	function request(){
+		var xmlhttp;
+		var limit = 5;
+		var page = 1;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		}else{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.open("GET","http://ki76av.natappfree.cc/user/apply/record"+"?limit="+limit+"&page="+page,true);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState == 4&&xmlhttp.status==200) {
+					 var arr = JSON.parse(xmlhttp.responseText).data.list;//----------------
+					 // alert(JSON.stringify(arr));//---------------
+					 list(arr);
+					 more(arr);
+					}
+				// more(arr);
+			}
+		}
+
+		function list(len = 5){
+			for (var i = 0 ; i<len ;i++) {
+				document.write("<hr style='opacity: 0;margin-top: 0;'>");
+
+				document.write("<div class='div1'  style='background-color: ;border:1px solid #f1e7e7;width: 90%;margin-right: 10%;height:20%;border-radius: 0px 20px 20px 0px;box-shadow: 5px 5px 5px #888888;min-height:20%; height: auto;'><table class='table' id='more' style='background-color: ;margin-top: 20px;margin-left: 5%;margin-right: 10%;display: ;min-height: 25%;height: auto;border-radius: 10px;width: 75%;float: left;''><tr ><td >申请时间</td><td >2018-11-25 13：24</td></tr><tr >	<td >申请会议室</td><td >逸夫楼103</td></tr><tr ><td >申请人</td><td >1705010104/王莹东</td></tr></table><div style='height:100px;display: inline-block;'><div style='font-size: 15px;text-align: center;margin-top: 57px;color: #6CF;text-decoration:underline;font-weight: bold;'><span class='glyphicon glyphicon-menu-right' style='zoom:140%'></div></div></div>");
+			}
+			document.write("<div style='text-align:center'><button style='border: 1px solid transparent;outline: none; background-color:white;margin-top:10px'>查看更多<span class='glyphicon glyphicon-chevron-down' style='top:5px'></span></button></div>");
+			document.write("<hr style='opacity:0'>");
+
+
+
+			var tables = document.getElementsByTagName("table");
+			var more_arr = document.getElementsByClassName("glyphicon");
+			for(var i = 0 ; i < len ; i++){
+					tables[i].setAttribute("id","tb"+i) ;
+					more_arr[i].setAttribute("id","more"+i) ;
+			}
+			more(len);
+		}
+		function more(arr ){
+			var tables = document.getElementsByTagName("table");
+			
+			for (var i = 0;i< arr; i++) {
+				document.getElementById("more"+i).onclick = function() {
+					location.href="admin_checked_more.html?id="+12345;
+				}
+			}
+		}
+
+		function headtoggle(){
+			document.getElementById("head1").onclick = function(){
+				document.getElementById("head2").className="";
+				this.className = "active";
+				var divarr = document.getElementsByClassName("div1");
+				for (var i = divarr.length - 1; i >= 0; i--) {
+					divarr[i].style.display="block";
+				}
+				var divarr = document.getElementsByClassName("div2");
+				for (var i = divarr.length - 1; i >= 0; i--) {
+					divarr[i].style.display="none";
+				}
+				// document.getElementsByClassName("div2").style.display="none";
+			}
+			document.getElementById("head2").onclick = function(){
+				document.getElementById("head1").className="";
+				this.className = "active";
+				var divarr = document.getElementsByClassName("div1");
+				for (var i = divarr.length - 1; i >= 0; i--) {
+					divarr[i].style.display="none";
+				}
+				var divarr = document.getElementsByClassName("div2");
+				for (var i = divarr.length - 1; i >= 0; i--) {
+					divarr[i].style.display="block";
+				}
+
+			}
+		}
+		function go() {
+			location.href="admin_to_check.html";
+		}
+		
+		// function more(arr){
+		// 	// var tables = document.getElementsByTagName("table");
+		// 	for(var i = 0 ; i < arr.length ; i++){
+		// 		var tables = document.getElementsByTagName("table");
+		// 		for (var i = 0; i<tabels.length ; i++) {
+		// 			tabels[i].id = "tb"+i;
+		// 		}
+		// 	}
+		// 	for (var i = 0;i< arr.length; i++) {
+		// 		document.getElementById("tb"+i).onclick = function() {
+		// 		 	location.href="more.html?id="+arr[i].applyId;
+		// 		 }
+		// 	}
+		// }
+	</script>
+	<!-- 模块结束 -->
+
+</body>
+</html>

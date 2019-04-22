@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>申请记录</title>
+	<meta charset="utf-8">
+
+	
+	<!-- 网络限制 -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<!-- 网络限制 -->
+
+	<link rel="stylesheet" type="text/css" href="admin.css">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">		
+	<link rel="stylesheet" href="style.css">		
+	<script src="js/modernizr.js"></script>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- [if lt IE 9]> -->
+
+	<!-- <![endif] -->
+	<style type="text/css">
+		body{
+			color: #4d4852;
+		}
+		td{
+			font-size: 15px;
+			padding: 0;
+			text-align: left;
+		}
+	</style>
+</head>
+<body style="background-color: ">
+	<div style='background-color: #6CF;width: 100%;height: 20%;border-radius: 0 0 0 40px; box-shadow: 5px 5px 5px #888888 ;color: black'><div id="test" style='background-color: ;width: 120px;height: 100%;display: inline-block;'><div style='width: 100%;background-color: ;padding-top: 40px;text-align: center;font-size: 25px'>申请记录</div></div><div style='background-color: ;width: 120px;height: 100%;float: right;display: inline-block;'><div style='width: 100%;background-color: ;padding-top: 45px;text-align: center;' onclick='go()'><span class='glyphicon glyphicon-menu-right' style='zoom:200%'></span></div></div></div>
+	<div id="box"> 
+
+	</div>
+		<!-- <hr style="opacity: 0;margin-top: 0;">
+		<div id="" style="background-color: ;border:1px solid #f1e7e7;width: 90%;margin-right: 10%;height:20%;border-radius: 0px 20px 20px 0px;box-shadow: 5px 5px 5px #888888;min-height:20%; height: auto;">
+			<table class="table" id="more" style="background-color: ;margin-top: 20px;margin-left: 5%;margin-right: 10%;display: ;min-height: 25%;height: auto;border-radius: 10px;width: 75%;float: left;">
+				<tr >
+					<td  >申请时间</td>
+					<td >2018-11-25 13：24</td>
+
+				</tr>
+				<tr >
+					<td >申请会议室</td>
+					<td >103</td>
+				</tr>
+				<tr >
+					<td >申请进程</td>
+					<td >已通过</td>
+				</tr>
+			</table>
+			<div style="height:100px;display: inline-block;">
+				<div id="del" style="font-size: 15px;text-align: center;margin-top: 57px;color: #6CF;text-decoration:underline;font-weight: bold;">撤销</div>
+			</div>
+		</div> -->
+
+
+		<footer class="navbar-fixed-bottom" style="margin-bottom: " >
+			<div class="" style="background-color: #e3e3e3;height:  50px">
+				<div id="head1" class="">
+					<div style="width: 100%;margin:15px auto" onclick="javascript:location.href='index.html'">返回主页</div>
+				</div>
+
+				<div id="head2" >
+					<div style="width: 100%;margin:15px auto" onclick="javascript:location.href='apply.html'">我要申请</div>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript">
+			// showlist();
+			request();
+			function request(){
+				var xmlhttp;
+				var limit = 5;
+				var page = 1;
+				if (window.XMLHttpRequest) {
+					xmlhttp = new XMLHttpRequest();
+				}else{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.open("GET","http://lhj.ngrok.xiaomiqiu.cn/user/apply/record?limit="+limit+"&page="+page,true);
+				xmlhttp.send();
+				xmlhttp.onreadystatechange = function(){
+					if (xmlhttp.readyState == 4&&xmlhttp.status==200) {
+					 var arr = JSON.parse(xmlhttp.responseText).data.list;//----------------
+					  showlist(arr);
+					  more(arr);
+					}
+				// more(arr);
+			}
+		}
+
+		function show(arr){
+			// var state ;
+			for (var i = 0; i < arr.length; i++) {
+				var newNode1 = document.createElement("hr");
+				newNode1.style.opacity = "0";
+				newNode1.style.marginTop="0";
+				var newNode2 = document.createElement("div");
+				newNode2.style.background = "";
+				newNode2.style.width = "90%";
+				newNode2.style.marginRight="10%";
+				newNode2.style.border = "1px solid #f1e7e7";
+				newNode2.style.height="auto";
+				newNode2.style.borderRadius="0px 20px 20px 0px";
+				newNode2.style.boxShadow = "5px 5px 5px #888";
+				newNode2.style.minHeight = "20%";
+				newNode2.setAttribute("id","div_item"+i);
+				var newNode3 = document.createElement("table");
+				newNode3.style.marginTop="20px";
+				newNode3.style.marginLeft="5%";
+				newNode3.style.marginRight="10%";
+				newNode3.style.minHeight="25%";
+				newNode3.style.height="auto";
+				newNode3.style.borderRadius="10px";
+				newNode3.style.width="75%";
+				newNode3.style.float="left";
+				
+				// newNode3.style.backgroundColor="";
+				newNode3.setAttribute("class","table");
+				newNode3.setAttribute("id","tb"+i);
+				var tbody = document.createElement("tbody");
+				tbody.setAttribute("id","tbody"+i);
+				var del_node = document.createElement("div");
+				del_node.style.height="100px";
+				del_node.style.display="inline-block";
+				del_node.setAttribute("id","del"+i);
+				var next = document.createElement("div");
+				next.style.fontSize="15px";
+				next.style.textAlign="center";
+				next.style.marginTop="57px";
+				next.style.color="#6CF";
+				next.style.textDecoration="underline";
+				next.style.fontWeight="bold";
+				next.innerHTML="撤销";
+				var id = arr[i].applyId;
+				 // newNode3.click = function() {
+				 // 	return more(id);
+				 // }
+				 next.click = function() {
+				 	return del(id);
+				 }
+
+
+				 document.body.appendChild(newNode1);
+				 document.body.appendChild(newNode2);
+
+				 document.getElementById("div_item"+i).appendChild(newNode3);
+				 document.getElementById("tb"+i).appendChild(tbody);
+				 document.getElementById("div_item"+i).appendChild(del_node);
+				 document.getElementById("del"+i).appendChild(next);
+				 switch(arr[i].state){
+				 	case 0 : arr[i].state = "待审核";break;
+				 	case 1 : arr[i].state = "审核通过";document.getElementById("del"+i).childNodes[0].style.display="none";break;
+				 	case 2 : arr[i].state = "审核不通过";document.getElementById("del"+i).childNodes[0].style.display="none";break;
+				 	case 3 : arr[i].state = "已撤销申请";document.getElementById("del"+i).childNodes[0].style.display="none";break;
+				 }
+				 for(var j = 0 ; j < 3 ; j++){
+				 	var newNode4 = document.createElement("tr");
+				 	newNode4.setAttribute("id","tb"+i+"tr"+j);
+				 	document.getElementById("tbody"+i).appendChild(newNode4);
+				 	switch(j){
+				 		case 0:
+				 		for(var k = 0 ; k<2 ;k++){
+				 			var newNode5 = document.createElement("td");
+				 			if (k == 0 ) {
+				 				newNode5.innerHTML="申请时间";
+				 			}
+				 			else{
+				 				newNode5.innerHTML=arr[i].applyTime;
+				 			}
+				 			document.getElementById("tb"+i+"tr"+j).appendChild(newNode5);
+				 		}
+				 		break;
+				 		case 1:for(var k = 0 ; k<2 ;k++){
+				 			var newNode5 = document.createElement("td");
+				 			if (k == 0 ) {
+				 				newNode5.innerHTML="申请会议室";
+				 			}
+				 			else{
+				 				newNode5.innerHTML=arr[i].meetingRoom;
+				 			}
+							// newNode5.innerHTML="22222";
+							document.getElementById("tb"+i+"tr"+j).appendChild(newNode5);
+						}
+						break;
+						case 2:for(var k = 0 ; k<2 ;k++){
+							var newNode5 = document.createElement("td");
+							if (k == 0 ) {
+								newNode5.innerHTML="申请进程";
+							}
+							else{
+								newNode5.innerHTML=arr[i].state;
+							}
+							// newNode5.innerHTML="33333";
+							document.getElementById("tb"+i+"tr"+j).appendChild(newNode5);
+						}
+						break;
+					}
+					
+				}
+
+
+				
+			}
+			
+			// document.write("<div style='text-align:center'><button style='border: 1px solid transparent;outline: none; background-color:white;margin-top:10px'>查看更多<span class='glyphicon glyphicon-chevron-down' style='top:5px'></span></button></div>");
+			// document.write("<hr style='opacity: 0'><hr style='pacity: 0'>");
+		}
+		function more(arr){
+			// alert(id);
+			var tables = document.getElementsByTagName("table");
+			var dels = document.getElementsByClassName("del");
+			for (var j =  0; j < tables.length; j++) {
+				tables[j].id = "tb"+j;
+				dels[j].id="del"+j;
+				switch(arr[j].state){
+				 	case "待审核" : break;
+				 	case "审核通过" : document.getElementById("del"+j).parentNode.style.display="none";break;
+				 	case "审核不通过" : document.getElementById("del"+j).parentNode.style.display="none";break;
+				 	case "已撤销申请" : document.getElementById("del"+j).parentNode.style.display="none";break;
+				 }
+			}
+			for (let i = 0; i < arr.length; i++) {
+				document.getElementById("tb"+i).onclick = function(){
+					location.href="more.html?id="+arr[i].applyId;
+				}
+			}
+			
+			for (let k = 0; k < dels.length; k++) {
+				document.getElementById("del"+k).onclick = function(){
+					var app_id = arr[k].applyId;
+					del(app_id);
+				}
+			}
+
+		}
+
+
+		function del(id){
+			// 	var id = 12335;
+			// alert(id);
+			// location.href="http://6269pn.natappfree.cc/user/apply/cancel?applyId="+id+"&state="+"3";
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.open("GET","http://lhj.ngrok.xiaomiqiu.cn/user/apply/cancel"+"?applyId="+id+"&state="+3,true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange=function(){
+				if (xmlhttp.readyState == 4&&xmlhttp.status==200) {
+					 // var arr = JSON.parse(xmlhttp.responseText).data;//----------------
+					 alert("操作成功");
+					 location.reload();
+					}
+					else{
+						// alert("操作失败");
+					}
+					
+				}
+			}
+
+
+			function showlist(arr){
+				str ="";
+				for (var i = 0 ; i< arr.length ;i++) {
+
+			// 	document.write("<hr style='opacity: 0;margin-top: 0;'>");
+			// 	document.write("<div style='background-color: ;border:1px solid #f1e7e7;width: 90%;margin-right: 10%;height:20%;border-radius: 0px 20px 20px 0px;box-shadow: 5px 5px 5px #888888;min-height:20%; height: auto;'><table class='table' id='' style='background-color: ;margin-top: 20px;margin-left: 5%;margin-right: 10%;display: ;min-height: 25%;height: auto;border-radius: 10px;width: 75%;float: left;''><tr ><td >申请时间</td><td >"+arr[i].applyTime+"</td></tr><tr ><td >申请会议室</td><td >"+arr[i].building+arr[i].meetingRoom+"</td></tr><tr ><td >申请进程</td><td >"+arr[i].state+"</td></tr></table><div style='height:100px;display: inline-block;'><div class='del' style='font-size: 15px;text-align: center;margin-top: 57px;color: #6CF;text-decoration:underline;font-weight: bold;'>撤销</div></div></div>");
+			// }
+			// document.write("<div style='text-align:center'><button style='border: 1px solid transparent;outline: none; background-color:white;margin-top:10px'>查看更多<span class='glyphicon glyphicon-chevron-down' style='top:5px'></span></button></div>");
+			// document.write("<hr style='opacity:0'>");
+			// document.write("<hr style='opacity:0'>");
+			switch(arr[i].state){
+				 	case 0 : arr[i].state = "待审核";break;
+				 	case 1 : arr[i].state = "审核通过";;break;
+				 	case 2 : arr[i].state = "审核不通过";;break;
+				 	case 3 : arr[i].state = "已撤销申请";break;
+				 }
+			str += "<hr style='opacity: 0;margin-top: 0;'>" ;
+			str +="<div style='background-color: ;border:1px solid #f1e7e7;width: 90%;margin-right: 10%;border-radius: 0px 20px 20px 0px;box-shadow: 5px 5px 5px #888888;min-height:125px; height: auto;'><table class='table' style='background-color: ;margin-top: 20px;margin-left: 5%;margin-right: 10%;display: ;min-height: 25%;height: auto;border-radius: 10px;width: 75%;float: left;''><tr ><td >申请时间</td><td >"+arr[i].applyTime+"</td></tr><tr ><td >申请会议室</td><td >"+arr[i].building+arr[i].meetingRoom+"</td></tr><tr ><td >申请进程</td><td >"+arr[i].state+"</td></tr></table><div style='height:100px;display: inline-block;'><div class='del' style='font-size: 15px;text-align: center;margin-top: 57px;color: #6CF;text-decoration:underline;font-weight: bold;'>撤销</div></div></div>";
+			
+			
+			// del_click(arr);
+		}
+		str += "<div style='text-align:center'><button style='border: 1px solid transparent;outline: none; background-color:white;margin-top:10px'>查看更多<span class='glyphicon glyphicon-chevron-down' style='top:5px'></span></button></div><hr style='opacity:0'><hr style='opacity:0'>";
+		document.getElementById("box").innerHTML = str;
+	}
+			
+
+
+
+			function go(){
+				location.href="schedule.html";
+			}
+		</script>
+
+	</body>
+	</html>

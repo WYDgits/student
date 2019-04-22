@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>会议室使用日程表</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="admin.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">		
+	<link rel="stylesheet" href="style.css">		
+	<script src="js/modernizr.js"></script>
+	<link rel="stylesheet" type="text/css" href="./iconfont.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- [if lt IE 9]> -->
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<!-- <![endif] -->
+	<style type="text/css">
+		body{
+			color: #4d4852;
+		}
+		td{
+			font-size: 10px;
+			width: 100px;
+		}
+	</style>
+</head>
+<body style="background-color: ;">
+	<div style="background-color: #6CF;width: 100%;height: 20%;border-radius: 0 0 0 40px; box-shadow: 5px 5px 5px #888888 ;color: black">
+		<div style="background-color: ;width: 120px;height: 100%;display: inline-block;">
+			<div id="building" style="width: 100%;background-color: ;padding-top: 40px;text-align: center;font-size: 25px">逸夫楼</div>
+			<div style="width: 100%;background-color: ;margin-top: 30px;text-align: center;font-size: 15px">全部会议室</div>
+		</div>
+		<div style="background-color: ;width: 120px;height: 100%;float: right;display: inline-block;">
+			<div style="width: 100%;background-color: ;padding-top: 45px;text-align: center;" onclick="go()"><span class="glyphicon glyphicon-menu-right" style="zoom:200%"></span></div>
+		</div>
+	</div>
+	<div id="box">
+
+	</div>
+	<footer class="navbar-fixed-bottom" style="margin-bottom: " >
+		<div class="" style="background-color: #e3e3e3;height:  50px">
+			<div id="head1" class="">
+				<div style="width: 100%;margin:15px auto" onclick="javascript:location.href='index.html'">返回主页</div>
+			</div>
+
+			<div id="head2" >
+				<div style="width: 100%;margin:15px auto" onclick="javascript:location.href='apply.html'">我要申请</div>
+			</div>
+		</div>
+	</footer>
+	
+	<script type="text/javascript">
+		request();
+		// list();
+		// bangding();
+		function list(arr){
+			var str = "";
+			// document.getElementById("building").innerHTML=""
+			for (var i = 0 ; i<arr.length ;i++) {
+				switch(arr[i].media){
+					case 0 : arr[i].media = "不支持";break;
+					case 1 : arr[i].media = "支持";;break;
+				}
+				var str = str +"<hr style='opacity: 0;margin-top: 0;'><div class='mid' style='display:none'>"+arr[i].mId+"</div><div  style='background-color: ;text-align:center;border:1px solid #f1e7e7;border-radius:0 20px 20px 0 ;width:320px;box-shadow: 5px 5px 5px #888888;margin-right: 10%;min-height:125px; height: auto;'><div style='background-color: ;display:inline-block;width: 20%;height: 60%;text-align: center;'><span class='glyphicon glyphicon-map-marker' style='zoom:280%;margin-top: 25%;'></span></div><div style='width: 70%;height: 50%;display:inline-block;float: right;margin-right: 10%;background-color: ;'><div style='margin-top:5%;width: 50%;height: 70%;background-color: ;display: inline-block;'><span class='glyphicon glyphicon-user' style='zoom:110%;margin-top: 11px'></span><div style='width: 70%;text-align: ;height: 50%;margin-top: 5px;background-color: ;display: inline-block;;float: right;'><span style='font-size: 15px'>可容纳</span></div><div style='width: 70%;height: 40%;background-color: ;display: inline-block;margin-top: -10px;float: right;'><span style='font-size: 15px;color: #6CF;text-decoration: underline;'>"+arr[i].mSize+"</span>	</div></div><div style='margin-top:5%;width: 50%;height: 70%;float: right;background-color: '><span class='glyphicon glyphicon-facetime-video' style='zoom:110%;margin-top: 11px'></span><div style='width: 70%;text-align: ;height: 50%;margin-top: 5px;background-color: ;display: inline-block;float: right;'><span style='font-size: 15px'>多媒体设备</span></div><div style='width: 70%;height: 40%;background-color: ;display: inline-block;margin-top: -10px;float: right;'><span style='font-size: 15px;color: #6CF;text-decoration: underline;'>"+arr[i].media+"</span></div></div></div><div style='width: 70%;height: 40%;display:inline-block;float: right;margin-right: 10%;margin-top: -10px;background-color: ; '><div  style='height: 100%;width: 15%;float: left;display: inline-block;text-align: left;background-color: '><span class='glyphicon glyphicon-calendar' style='zoom:110%;margin-top: 68%'></span></div><span style='font-size: 10px'>本周预约详情</span><div style='background-color: ;width: 85%;height: 50%;display: inline-block;float: right;'>	<button class='toggle'style='width: 100%;outline: none;border-radius: 5px;border: none' ><span  style='font-size: 8px;'>展开查看</span><span id='jiantou1' style='font-size: 8px;float: right;margin-top: 5px' class='glyphicon glyphicon-chevron-down'></span></button></div></div><div style='background-color: ;width: 20%;height: 25%;display:inline-block;text-align: center;'>"+arr[i].meetingRoom+"</div><table class='table'  style='margin-top: 10%;margin-left: 5%;margin-right: 10%;display: none;min-height: 25%;height: auto;border-radius: 10px;border:1px solid;width: 85%'>";
+				// for (var j = 0;j< 2;j++) {
+				// 	str += "<tr ><td style='text-align: center;' >2019.01.25</td><td >14：00-16：00</td><td >计算机专业班会计算机专业班会</td></tr><tr ><td style='text-align: center;'>1705010104</td><td style='text-align: center'>张三<span style='width:20%;opacity:0'>2222</span>TEL：</td>	<td >12345678901</td></tr>";
+				// }
+				str +="</table></div>";
+			}
+			str += "<div style='text-align:center'><button style='border: 1px solid transparent;outline: none; background-color:white;margin-top:10px'>查看更多<span class='glyphicon glyphicon-chevron-down' style='top:5px'></span></button></div><hr style='opacity:0'><hr style='opacity: 0'>";
+			document.getElementById("box").innerHTML = str;
+		}
+
+
+		function request(){
+			var xmlhttp;
+			var page=1;
+			var limit = 5;
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.open("GET","http://lhj.ngrok.xiaomiqiu.cn/user/meeting/list?page="+page+"&limit="+limit,true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange=function(respond){
+				if (xmlhttp.readyState == 4 && xmlhttp.status==200) {
+					 var arr = JSON.parse(xmlhttp.responseText).data.list;//----------------
+					 list(arr);
+					 bangding();
+					}else{
+					// alert("fail");
+				}
+			}
+		}
+	// list();
+	function bangding(){
+		var item = document.getElementsByClassName("table");
+		var buttons =document.getElementsByClassName("toggle");
+		var mids = document.getElementsByClassName("mid");
+	// alert(item.length);
+	for (var i = 0; i < item.length; i++) {
+		mids[i].id="mid"+i;
+		item[i].id = "table"+i;
+		buttons[i].id="button"+i;
+		var a = buttons[i];
+		// setArreibute("id","button"+i);
+		buttons[i].onclick = function(){ down(this)};
+	}
+};
+
+function down(x) {
+	// alert(x.id);
+	var id = x.id;
+	var xlen = id.length;
+	var b = id[xlen-1] - '0';
+	var a = document.getElementById("table"+b); 
+	var span1 = x.childNodes[0];
+	var span2 = x.childNodes[1];
+	if (a.style.display == "none") {
+		var xmlhttp;
+		var mid =document.getElementById("mid"+b).innerHTML;
+		// alert(mid);
+		var page=1;
+		var limit = 5;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		}else{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.open("GET","http://lhj.ngrok.xiaomiqiu.cn/user/meeting/detail?page="+page+"&limit="+limit+"&mId="+mid,true);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange=function(respond){
+			if (xmlhttp.readyState == 4 && xmlhttp.status==200) {
+					 var arr = JSON.parse(xmlhttp.responseText).data.list;//----------------
+					 if (arr.length == 0) {
+					 	var str = "";
+					 	str = "<tr><td>暂无数据</td></tr>"
+					 }else{
+					 	var str = "";
+					 	for (var i = 0; i < arr.length; i++) {
+					 		str = str+ "<tr ><td style='text-align: center;' >2019.01.25</td><td >"+arr[i].orderBegin+"-"+arr[i].orderEnd+"</td><td >"+arr[i].applyReason+"</td></tr><tr ><td style='text-align: center;'>"+arr[i].number+"</td><td style='text-align: center'>"+arr[i].applicant+"<span style='width:20%;opacity:0'>2222</span>TEL：</td><td >"+arr[i].phone+"</td></tr>";
+					 	}
+					 }
+					 document.getElementById("table"+b).innerHTML=str;
+					}else{
+				}
+			}
+			a.style.display = "block";
+			span1.innerHTML = "收起";
+		// span2.innerHTML="11";
+		span2.className ="glyphicon glyphicon-chevron-up" ;
+
+	}else{
+		a.style.display = "none"
+		span1.innerHTML = "展开查看";
+		// span2.innerHTML="22";
+		span2.className ="glyphicon glyphicon-chevron-down" ;
+	}
+}
+
+
+
+function go(){
+	location.href="apply.html";
+}
+</script>
+<!-- 模块结束 -->
+
+</body>
+<!-- 开头结束 -->
+<!-- 模块开始 -->
+	<!-- <hr style="opacity: 0;margin-top: 0;">
+	<div class="" style="background-color: ;border:1px solid #f1e7e7;border-radius:0 20px 20px 0 ;width:335px;box-shadow: 5px 5px 5px #888888;margin-right: 10%;min-height:20%; height: auto;">
+		<div style="background-color: ;display:inline-block;width: 20%;height: 60%;text-align: center;">
+			<span class="glyphicon glyphicon-map-marker" style="zoom:280%;margin-top: 25%;"></span>
+		</div>
+		<div style="width: 70%;height: 50%;display:inline-block;float: right;margin-right: 10%;background-color: ;">
+			<div style="margin-top:5%;width: 50%;height: 70%;background-color: ;display: inline-block;">
+				<span class="glyphicon glyphicon-user" style="zoom:110%;margin-top: 11px"></span>
+				<div style="width: 70%;text-align: ;height: 50%;margin-top: 5px;background-color: ;display: inline-block;;float: right;">
+					<span style="font-size: 15px">可容纳</span>
+				</div>
+				<div style="width: 70%;height: 40%;background-color: ;display: inline-block;margin-top: -10px;float: right;">
+					<span style="font-size: 15px;color: #6CF;text-decoration: underline;">20人以下</span>
+				</div>
+			</div>
+			<div style="margin-top:5%;width: 50%;height: 70%;float: right;background-color: ">
+				<span class="glyphicon glyphicon-facetime-video" style="zoom:110%;margin-top: 11px"></span>
+				
+				<div style="width: 70%;text-align: ;height: 50%;margin-top: 5px;background-color: ;display: inline-block;;float: right;">
+					<span style="font-size: 15px">多媒体设备</span>
+				</div>
+				<div style="width: 70%;height: 40%;background-color: ;display: inline-block;margin-top: -10px;float: right;">
+					<span style="font-size: 15px;color: #6CF;text-decoration: underline;">支持</span>
+				</div>
+			</div>
+		</div>
+		<div style="width: 70%;height: 40%;display:inline-block;float: right;margin-right: 10%;margin-top: -10px;background-color: ; ">
+			<div  style="height: 100%;width: 15%;float: left;display: inline-block;text-align: left;background-color: ">
+				<span class="glyphicon glyphicon-calendar" style="zoom:110%;margin-top: 68%"></span>
+			</div>
+			<span style="font-size: 10px">本周预约详情</span>
+			<div style="background-color: ;width: 85%;height: 50%;display: inline-block;float: right;">
+				<button class="toggle"  style="width: 100%;outline: none;border-radius: 5px;border: none" >
+					<span  style="font-size: 8px;">展开查看</span>
+					<span id="jiantou1" style="font-size: 8px;float: right;margin-top: 5px" class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+			</div>
+		</div>
+		<div style="background-color: ;width: 20%;height: 25%;display:inline-block;text-align: center;">
+			103
+		</div>
+		<table class="table"  style="background-color: ;margin-top: 10%;margin-left: 5%;margin-right: 10%;display: none;min-height: 25%;height: auto;border-radius: 10px;border:1px solid;width: 85%">
+			<tr >
+				<td style="text-align: center;" >2019.01.25</td>
+				<td >14：00-16：00</td>
+				<td >计算机专业班会</td>
+			</tr>
+			<tr >
+				<td style="text-align: center;">张三</td>
+				<td style="text-align: right">TEL：</td>
+				<td >12345678901</td>
+			</tr>
+
+			<tr >
+				<td style="text-align: center;" >2019.01.25</td>
+				<td >14：00-16：00</td>
+				<td >计算机专业班会</td>
+			</tr>
+			<tr >
+				<td style="text-align: center;">张三</td>
+				<td style="text-align: right">TEL：</td>
+				<td >12345678901</td>
+			</tr>
+		</table>
+
+	</div> -->
+	</html>
